@@ -48,7 +48,7 @@
     "src"
   ],
   "dependencies": {
-    "browser-with-fingerprints": "^1.2.12"
+    "browser-with-fingerprints": "1.2.12"
   },
   "devDependencies": {
     "@cheshire-caat/prettier-config": "^1.0.0",
