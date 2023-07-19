@@ -2,10 +2,17 @@ const { loader } = require('./loader');
 const { FingerprintPlugin } = require('browser-with-fingerprints');
 const { onClose, bindHooks, getViewport, setViewport } = require('./utils');
 
+const LAUNCH_FALLBACK_WARNING = [
+  'The original "launch" method is temporarily unsupported.',
+  'Under the hood it will use the "launchPersistentContext" method.',
+  'Therefore, it is recommended to use the second one directly instead.',
+].join('\n');
+
 const Plugin = class PlaywrightFingerprintPlugin extends FingerprintPlugin {
   async launch(options = {}) {
     this.#validateOptions(options);
-    return await super.launch(options);
+    console.warn(LAUNCH_FALLBACK_WARNING);
+    return await this.launchPersistentContext('', options);
   }
 
   async launchPersistentContext(userDataDir, options = {}) {
@@ -18,8 +25,17 @@ const Plugin = class PlaywrightFingerprintPlugin extends FingerprintPlugin {
 
     return await super.launch({
       ...options,
+      userDataDir,
       viewport: null,
-      launcher: { launch: this.launcher[method].bind(this.launcher, userDataDir) },
+      launcher: {
+        launch: (options = {}) => {
+          const [userDataDirArg] = options.args.splice(
+            options.args.findIndex((arg) => arg.startsWith('--user-data-dir')),
+            1
+          );
+          return this.launcher[method](userDataDirArg.split('=')[1], options);
+        },
+      },
     });
   }
 
