@@ -17,6 +17,7 @@ const Plugin = class PlaywrightFingerprintPlugin extends FingerprintPlugin {
 
   async launchPersistentContext(userDataDir, options = {}) {
     this.#validateOptions(options);
+    const { ignoreDefaultArgs } = options;
     const method = 'launchPersistentContext';
 
     if (!this.launcher[method]) {
@@ -36,6 +37,9 @@ const Plugin = class PlaywrightFingerprintPlugin extends FingerprintPlugin {
           return this.launcher[method](userDataDirArg.split('=')[1], options);
         },
       },
+      ignoreDefaultArgs: Array.isArray(ignoreDefaultArgs)
+        ? ignoreDefaultArgs.concat(IGNORED_ARGUMENTS)
+        : ignoreDefaultArgs || IGNORED_ARGUMENTS,
     });
   }
 
@@ -91,5 +95,7 @@ const Plugin = class PlaywrightFingerprintPlugin extends FingerprintPlugin {
 exports.plugin = new Plugin(loader.load());
 
 exports.createPlugin = Plugin.create.bind(Plugin);
+
+const IGNORED_ARGUMENTS = ['--disable-extensions'];
 
 const UNSUPPORTED_OPTIONS = (exports.UNSUPPORTED_OPTIONS = ['proxy', 'channel', 'firefoxUserPrefs']);
