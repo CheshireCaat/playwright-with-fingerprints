@@ -1,5 +1,6 @@
-require('dotenv').config();
-const { plugin } = require('..');
+// require('dotenv').config();
+// Replace this import with `require('..')` if you are running the example from the repository:
+const { plugin } = require('playwright-with-fingerprints');
 
 (async () => {
   const context = await plugin.launchPersistentContext(`${__dirname}/profile`);
