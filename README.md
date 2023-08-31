@@ -271,9 +271,9 @@ plugin.useProxy('127.0.0.1:8080').useFingerprint(fingerprint);
 
 Use these links to see a detailed description of the methods:
 
-- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L318) one for the **useFingerprint** method
+- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L324) one for the **useFingerprint** method
   (also see additional options [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L38)).
-- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L345) one for the **useProxy** method
+- [This](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L351) one for the **useProxy** method
   (also see additional options [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L110)).
 
 The usage of these methods is very similar - they both take two parameters, the first of which is the configuration data itself, and the second is additional options.
@@ -398,7 +398,7 @@ await writeFile('fingerprint.json', fingerprint);
 plugin.useFingerprint(await readFile('fingerprint.json', 'utf8'));
 ```
 
-You can learn more about the options directly when adding these methods - just use the built-in [annotations](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L382).
+You can learn more about the options directly when adding these methods - just use the built-in [annotations](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L411).
 
 You can use any [tags](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L15), filters
 (e.g. [time](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L8) limit) and settings if you have a service key.
@@ -438,7 +438,7 @@ plugin.useProxy('127.0.0.1:8080', {
 });
 ```
 
-You can learn more about the parameters and additional options for this method [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L345)
+You can learn more about the parameters and additional options for this method [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L351)
 and [here](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L110).
 
 The browser supports two types of proxies - **https** and **socks5**.
@@ -567,13 +567,13 @@ Describes a time limit that can be used to filter fingerprints.
 
 ---
 
-#### [Version](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L454)
+#### [Version](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L519)
 
 Describes an object that provides complete information about the available browser version.
 
 ---
 
-#### [plugin.version](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L448)
+#### [plugin.version](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L513)
 
 Type: **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**
 
@@ -593,7 +593,7 @@ Create a separate plugin instance using the provided **playwright** compatible b
 
 ---
 
-#### [plugin.versions(format?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L291)
+#### [plugin.versions(format?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L297)
 
 - `format` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** The output format of the returned result.
 
@@ -603,7 +603,7 @@ Get a list of all available browser versions.
 
 ---
 
-#### [plugin.spawn(options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L416)
+#### [plugin.spawn(options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L445)
 
 - `options` **[Options](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/plugin/launcher/index.d.ts#L54)?** Launcher options that only apply to the browser when using the `spawn` method.
 
@@ -623,23 +623,33 @@ Launches **playwright** and launches a browser instance with given arguments and
 
 ---
 
-#### [plugin.useProxy(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L345)
+#### [plugin.useBrowserVersion(version)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L374)
+
+- `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Version value as a string.
+
+Set the current browser version used by the plugin instance.
+
+Returns: **this** The same plugin instance with an updated settings (for optional chaining).
+
+---
+
+#### [plugin.useProxy(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L351)
 
 - `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Proxy value as a string.
 - `options` **[ProxyOptions](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L110)?** Set of configurable options for applying a proxy.
 
-Returns: **this** The same plugin instance with an updated proxy settings (for optional chaining).
+Returns: **this** The same plugin instance with an updated settings (for optional chaining).
 
 Set the proxy settings using the specified proxy as a string and additional options when specified.
 
 ---
 
-#### [plugin.useFingerprint(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L318)
+#### [plugin.useFingerprint(value?, options?)](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L324)
 
 - `value` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Fingerprint value as a string.
 - `options` **[FingerprintOptions](https://github.com/CheshireCaat/browser-with-fingerprints/blob/master/src/index.d.ts#L38)?** Set of configurable options for applying a fingerprint.
 
-Returns: **this** The same plugin instance with an updated proxy settings (for optional chaining).
+Returns: **this** The same plugin instance with an updated settings (for optional chaining).
 
 Set the fingerprint settings using the specified fingerprint as a string and additional options when specified.
 
