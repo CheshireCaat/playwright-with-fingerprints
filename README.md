@@ -13,7 +13,7 @@ In general, only **four** basic steps are required, see the example below:
 
 https://user-images.githubusercontent.com/30115373/198844008-de84d5f8-db14-498d-a7f0-630da931177e.mp4
 
-Current supported engine version - **119.0.6045.106**.
+Current supported engine version - **121.0.6167.86**.
 
 ## About
 
@@ -785,4 +785,4 @@ You can define it in any way convenient for you, but by default variables are re
 
 ## License
 
-Copyright © 2023, [CheshireCaat](https://github.com/CheshireCaat). Released under the [MIT](LICENSE.md) license.
+Copyright © 2024, [CheshireCaat](https://github.com/CheshireCaat). Released under the [MIT](LICENSE.md) license.
