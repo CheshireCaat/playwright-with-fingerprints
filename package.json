@@ -4,7 +4,7 @@
   "homepage": "https://github.com/CheshireCaat/playwright-with-fingerprints#readme",
   "repository": "CheshireCaat/playwright-with-fingerprints",
   "author": "CheshireCaat",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CheshireCaat/playwright-with-fingerprints/issues",
@@ -43,19 +43,19 @@
     "web"
   ],
   "engines": {
-    "node": ">= 16"
+    "node": ">= 18"
   },
   "files": [
     "src"
   ],
   "dependencies": {
-    "browser-with-fingerprints": "1.5.9"
+    "browser-with-fingerprints": "1.6.0"
   },
   "devDependencies": {
     "@cheshire-caat/prettier-config": "^1.0.0",
     "dotenv": "^16.4.5",
     "mocha": "^10.4.0",
-    "playwright": "^1.43.1"
+    "playwright": "^1.44.1"
   },
   "peerDependencies": {
     "playwright": ">=1.27.1",
