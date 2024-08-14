@@ -1,6 +1,21 @@
 import type { BrowserType } from 'playwright';
 import type { FingerprintPlugin } from 'browser-with-fingerprints';
 
+type LaunchFn = Launcher['launchPersistentContext'];
+
+/**
+ * Describes the **playwright** compatible launch options.
+ */
+export type PluginLaunchOptions =
+  | Parameters<LaunchFn>[1]
+  | {
+      /**
+       * Service key for applying a fingerprint.
+       * @defaultValue ''
+       */
+      key?: string;
+    };
+
 /**
  * Describes the **playwright** compatible browser launcher.
  *
@@ -43,6 +58,8 @@ export interface PlaywrightFingerprintPlugin extends FingerprintPlugin {
    *
    * If you need to use the default browsers without fingerprint spoofing, just use the **playwright** built-in `launch` method.
    *
+   * You must specify the service key to apply the fingerprint when launching the browser (if the fingerprint was obtained using a paid key).
+   *
    * @example
    * An example of launching the browser in visible mode:
    *
@@ -55,7 +72,7 @@ export interface PlaywrightFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a browser instance.
    */
-  launch(options: Parameters<Launcher['launchPersistentContext']>[1]): ReturnType<Launcher['launchPersistentContext']>;
+  launch(options?: PluginLaunchOptions): ReturnType<LaunchFn>;
 
   /**
    * Returns the persistent browser context instance.
@@ -67,9 +84,7 @@ export interface PlaywrightFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a context instance.
    */
-  launchPersistentContext(
-    ...args: Parameters<Launcher['launchPersistentContext']>
-  ): ReturnType<Launcher['launchPersistentContext']>;
+  launchPersistentContext(userDataDir: string, options?: PluginLaunchOptions): ReturnType<LaunchFn>;
 
   /**
    * A **playwright** compatible launcher or the **playwright** itself.
