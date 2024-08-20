@@ -16,15 +16,17 @@ exports.onClose = (target, listener) => {
  * Modify the original browser methods and add additional hooks.
  * Hooks will be called before the corresponding method completes.
  *
- * @param {import('playwright').Browser} browser - The target browser instance.
+ * @param {import('playwright').Browser} target - The target browser instance.
  *
  * @internal
  */
-exports.bindHooks = (browser, hooks = {}) => {
-  if (isBrowser(browser)) {
-    browser.newContext = new Proxy(browser.newContext, {
+exports.bindHooks = (target, hooks = {}) => {
+  if (isBrowser(target)) {
+    target.newContext = new Proxy(target.newContext, {
       apply: (fn, ctx, [opts]) => fn.call(ctx, resetOptions(opts)).then(patchContext),
     });
+  } else if (isContext(target)) {
+    patchContext(target);
   }
 
   /** @param {import('playwright').BrowserContext} ctx */
@@ -50,8 +52,6 @@ exports.bindHooks = (browser, hooks = {}) => {
 
     return page;
   }
-
-  if (!browser.newContext) patchContext(browser);
 };
 
 /**
@@ -112,4 +112,8 @@ const resetOptions = (options = {}) => ({
 
 const isBrowser = (target) => {
   return target && typeof target.version === 'function';
+};
+
+const isContext = (target) => {
+  return target && typeof target.browser === 'function';
 };
