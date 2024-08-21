@@ -25,8 +25,6 @@ exports.bindHooks = (target, hooks = {}) => {
     target.newContext = new Proxy(target.newContext, {
       apply: (fn, ctx, [opts]) => fn.call(ctx, resetOptions(opts)).then(patchContext),
     });
-  } else if (isContext(target)) {
-    patchContext(target);
   }
 
   /** @param {import('playwright').BrowserContext} ctx */
@@ -52,6 +50,8 @@ exports.bindHooks = (target, hooks = {}) => {
 
     return page;
   }
+
+  if (!target.newContext) patchContext(target);
 };
 
 /**
@@ -112,8 +112,4 @@ const resetOptions = (options = {}) => ({
 
 const isBrowser = (target) => {
   return target && typeof target.version === 'function';
-};
-
-const isContext = (target) => {
-  return target && typeof target.browser === 'function';
 };
