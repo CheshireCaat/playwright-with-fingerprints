@@ -225,7 +225,7 @@ You can use the official [API](https://playwright.dev/docs/api/class-browsertype
 The **launch** method also has the same purpose - to start a new browser instance with the given parameters and connect to it.
 
 In addition to the standard functionality, it allows you to change the fingerprint and proxy using the `useFingerprint` and `useProxy` methods.
-A detailed description and annotations can also be found [here](src/index.d.ts#L76).
+A detailed description and annotations can also be found [here](src/index.d.ts#L67).
 
 ```js
 const { plugin } = require('playwright-with-fingerprints');
@@ -599,7 +599,7 @@ It's better to replace such code with the `useProxy` method. This is much more c
 
 ### More info
 
-If you are having problems with the default plugin, or want to create multiple instances with different settings, you can use a separate exported [createPlugin](src/index.d.ts#L130) method.
+If you are having problems with the default plugin, or want to create multiple instances with different settings, you can use a separate exported [createPlugin](src/index.d.ts#L121) method.
 It allows you to create a standalone plugin instance that is used in the same way as a standard one. It takes a **playwright** compatible launcher object as a parameter:
 
 ```js
@@ -698,9 +698,9 @@ Describes an object that provides complete information about the available brows
 
 ---
 
-#### [createPlugin(launcher)](src/index.d.ts#L130)
+#### [createPlugin(launcher)](src/index.d.ts#L121)
 
-- `launcher` **[Launcher](src/index.d.ts#L25)** Playwright (or **API** compatible) browser launcher.
+- `launcher` **[Launcher](src/index.d.ts#L16)** Playwright (or **API** compatible) browser launcher.
 
 Returns: **PlaywrightFingerprintPlugin** A new separate plugin instance.
 
@@ -728,7 +728,7 @@ Launches a browser instance with given arguments and options when specified.
 
 ---
 
-#### [plugin.launch(options?)](src/index.d.ts#L76)
+#### [plugin.launch(options?)](src/index.d.ts#L67)
 
 - `options` **[PluginLaunchOptions](src/index.d.ts#L9)?** Set of configurable options to set on the browser.
 

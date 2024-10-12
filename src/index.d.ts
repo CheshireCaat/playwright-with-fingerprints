@@ -1,4 +1,4 @@
-import type { BrowserType } from 'playwright';
+import type { BrowserType } from 'playwright-core';
 import type { FingerprintPlugin } from 'browser-with-fingerprints';
 
 type LaunchFn = Launcher['launchPersistentContext'];
@@ -6,16 +6,7 @@ type LaunchFn = Launcher['launchPersistentContext'];
 /**
  * Describes the **playwright** compatible launch options.
  */
-export type PluginLaunchOptions =
-  | Parameters<LaunchFn>[1]
-  | {
-      /**
-       * Service key for applying a fingerprint.
-       *
-       * @defaultValue ''
-       */
-      // key?: string;
-    };
+export type PluginLaunchOptions = Parameters<LaunchFn>[1];
 
 /**
  * Describes the **playwright** compatible browser launcher.
