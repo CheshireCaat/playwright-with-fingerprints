@@ -7,7 +7,7 @@
     "url": "git+https://github.com/CheshireCaat/playwright-with-fingerprints.git"
   },
   "author": "CheshireCaat",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CheshireCaat/playwright-with-fingerprints/issues",
@@ -52,14 +52,14 @@
     "src"
   ],
   "dependencies": {
-    "browser-with-fingerprints": "2.0.7"
+    "browser-with-fingerprints": "2.0.8"
   },
   "devDependencies": {
     "@cheshire-caat/prettier-config": "^1.0.0",
-    "dotenv": "^16.4.5",
-    "mocha": "^11.0.1",
-    "playwright": "^1.49.0",
-    "prettier": "^3.4.1"
+    "dotenv": "^16.4.7",
+    "mocha": "^11.1.0",
+    "playwright": "^1.50.0",
+    "prettier": "^3.4.2"
   },
   "peerDependencies": {
     "playwright": ">=1.27.1",
