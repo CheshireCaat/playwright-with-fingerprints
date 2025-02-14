@@ -1,12 +1,10 @@
-import type { BrowserType } from 'playwright-core';
+import type { BrowserType, BrowserContext } from 'playwright-core';
 import type { FingerprintPlugin } from 'browser-with-fingerprints';
-
-type LaunchFn = Launcher['launchPersistentContext'];
 
 /**
  * Describes the **playwright** compatible launch options.
  */
-export type PluginLaunchOptions = Parameters<LaunchFn>[1];
+export type PluginLaunchOptions = Parameters<Launcher['launchPersistentContext']>[1];
 
 /**
  * Describes the **playwright** compatible browser launcher.
@@ -64,7 +62,7 @@ export interface PlaywrightFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a browser instance.
    */
-  launch(options?: PluginLaunchOptions): ReturnType<LaunchFn>;
+  launch(options?: PluginLaunchOptions): BrowserContext;
 
   /**
    * Returns the persistent browser context instance.
@@ -76,7 +74,7 @@ export interface PlaywrightFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a context instance.
    */
-  launchPersistentContext(userDataDir: string, options?: PluginLaunchOptions): ReturnType<LaunchFn>;
+  launchPersistentContext(userDataDir: string, options?: PluginLaunchOptions): BrowserContext;
 
   /**
    * A **playwright** compatible launcher or the **playwright** itself.
