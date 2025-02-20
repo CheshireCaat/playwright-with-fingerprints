@@ -15,6 +15,8 @@ https://user-images.githubusercontent.com/30115373/198844008-de84d5f8-db14-498d-
 
 Current supported engine version - **132.0.6834.84**.
 
+**IMPORTANT NOTE:** plugin only work on **Windows** operating system, it cannot be installed and used on **Linux**, **macOS** and other systems!
+
 ## About
 
 This library allows you to change browser fingerprint and use **playwright** automation framework with enhanced anonymity.
