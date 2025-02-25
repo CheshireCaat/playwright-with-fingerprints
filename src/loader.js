@@ -7,4 +7,4 @@ const Loader = require('browser-with-fingerprints/src/loader');
  *
  * @internal
  */
-exports.loader = new Loader('playwright', '1.27.1', ['playwright-core']);
+module.exports = new Loader('playwright', '1.27.1', ['playwright-core']);

@@ -1,6 +1,9 @@
-const { loader } = require('./loader');
+const defaultLauncher = require('./loader').load();
 const { FingerprintPlugin } = require('browser-with-fingerprints');
 const { onClose, bindHooks, getViewport, setViewport } = require('./utils');
+
+const IGNORED_ARGUMENTS = ['--disable-extensions'];
+const UNSUPPORTED_OPTIONS = ['proxy', 'channel', 'firefoxUserPrefs'];
 
 const LAUNCH_FALLBACK_WARNING = [
   'The original "launch" method is temporarily unsupported.',
@@ -92,10 +95,8 @@ const Plugin = class PlaywrightFingerprintPlugin extends FingerprintPlugin {
   }
 };
 
-exports.plugin = new Plugin(loader.load());
+exports.plugin = new Plugin(defaultLauncher);
 
 exports.createPlugin = Plugin.create.bind(Plugin);
 
-const IGNORED_ARGUMENTS = ['--disable-extensions'];
-
-const UNSUPPORTED_OPTIONS = (exports.UNSUPPORTED_OPTIONS = ['proxy', 'channel', 'firefoxUserPrefs']);
+exports.UNSUPPORTED_OPTIONS = UNSUPPORTED_OPTIONS;
