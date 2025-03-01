@@ -62,7 +62,7 @@ export interface PlaywrightFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a browser instance.
    */
-  launch(options?: PluginLaunchOptions): BrowserContext;
+  launch(options?: PluginLaunchOptions): Promise<BrowserContext>;
 
   /**
    * Returns the persistent browser context instance.
@@ -74,7 +74,7 @@ export interface PlaywrightFingerprintPlugin extends FingerprintPlugin {
    * @param options - Set of configurable options to set on the browser.
    * @returns Promise which resolves to a context instance.
    */
-  launchPersistentContext(userDataDir: string, options?: PluginLaunchOptions): BrowserContext;
+  launchPersistentContext(userDataDir: string, options?: PluginLaunchOptions): Promise<BrowserContext>;
 
   /**
    * A **playwright** compatible launcher or the **playwright** itself.
