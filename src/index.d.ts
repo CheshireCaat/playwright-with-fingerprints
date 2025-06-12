@@ -117,3 +117,5 @@ export declare const UNSUPPORTED_OPTIONS: readonly string[];
  * @returns A new separate plugin instance.
  */
 export declare function createPlugin(launcher: Launcher): PlaywrightFingerprintPlugin;
+
+export type * from 'browser-with-fingerprints';
